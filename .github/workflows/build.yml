@@ -18,13 +18,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1
-
-    - name: Restore NuGet packages
-      working-directory: c:\vcpkg
-      run: |  
-        dir
-        cmake --version
+    - name: vcpkg install 
+    - working-directory: c:\vcpkg
+      run: |
+        vcpkg.exe install boost-asio boost-regex openssl --triplet=x64-windows-static
+    
         
       
