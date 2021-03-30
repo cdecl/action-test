@@ -1,6 +1,9 @@
 name: MSBuild
 
-on: [push]
+on:
+  push:
+    paths:
+    - '.github/workflows/build.yml'
 
 env:
   # Path to the solution file relative to the root of the project.
@@ -18,13 +21,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: vcpkg install 
+    - name: cmake bulid 
 #       working-directory: c:\vcpkg
       run: |
         mkdir build && cd build
         cmake .. 
+        echo "cmake --build . --config $BUILD_CONFIGURATION"
         cmake --build . --config $BUILD_CONFIGURATION
         
     
-        
-      
