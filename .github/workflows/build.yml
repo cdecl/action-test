@@ -19,9 +19,12 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: vcpkg install 
-      working-directory: c:\vcpkg
+#       working-directory: c:\vcpkg
       run: |
-        vcpkg.exe install boost-asio boost-regex openssl --triplet=x64-windows-static
+        mkdir build && cd build
+        cmake .. 
+        cmake --build . --config $BUILD_CONFIGURATION
+        
     
         
       
